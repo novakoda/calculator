@@ -65,6 +65,15 @@ function equalize() {
   answered = true;
 };
 
+function clear() {
+  displayNumber = '0';
+  previousNumber = '0';
+  operator = '';
+  answered = false;
+  historyDisplay.innerHTML = '';
+  currentDisplay.innerHTML = displayNumber;
+};
+
 let displayNumber = '0';
 let previousNumber = '0';
 let operator = '';
@@ -92,4 +101,13 @@ operatorButtons.forEach(button => {
 
 equalButton.addEventListener('click', () => {
   equalize();
+});
+
+clearButton.addEventListener('click', () => {
+  clear();
+});
+
+backButton.addEventListener('click', () => {
+  displayNumber = '0';
+  currentDisplay.innerHTML = displayNumber;
 });
