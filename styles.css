@@ -11,9 +11,14 @@ body {
   display: grid;
   width: 400px;
   height: 600px;
+  /* grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(5, 80px); */
 }
 
 .button {
+
+  min-height: 5vw;
+  min-width: 5vw;
   padding: 10px;
   margin: 10px;
 
