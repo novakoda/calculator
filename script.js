@@ -37,13 +37,13 @@ function operate(num1, op, num2) {
 };
 
 function numberClicked(number) {
-  if (displayNumber == 0 || answered === true) {
+  if (displayNumber === '0' || answered === true) {
     displayNumber = number.toString();
-    currentDisplay.innerHTML = displayNumber;
+    updateDisplay(displayNumber);
     if (answered === true) {answered = false;};
   } else {
   displayNumber = displayNumber.toString() + number.toString();
-  currentDisplay.innerHTML = displayNumber;
+  updateDisplay(displayNumber);
   };
 };
 
@@ -51,8 +51,7 @@ function storeNumber(number, op) {
   operator = op.toString();
   previousNumber = displayNumber.toString() + ' ' + operator;
   displayNumber = '0';
-  historyDisplay.innerHTML = previousNumber;
-  //currentDisplay.innerHTML = displayNumber;
+  updateDisplay(displayNumber, previousNumber);
 };
 
 function equalize() {
@@ -60,8 +59,7 @@ function equalize() {
   num2 = Number(displayNumber);
   displayNumber = operate(num1, operator, num2).toString();
   previousNumber = '0';
-  historyDisplay.innerHTML = '';
-  currentDisplay.innerHTML = displayNumber;
+  updateDisplay(displayNumber, '');
   answered = true;
 };
 
@@ -70,8 +68,27 @@ function clear() {
   previousNumber = '0';
   operator = '';
   answered = false;
-  historyDisplay.innerHTML = '';
-  currentDisplay.innerHTML = displayNumber;
+  updateDisplay(displayNumber, '');
+};
+
+function updateDisplay(current, history) {
+  currentDisplay.innerHTML = current;
+  if (history !== undefined) {
+    historyDisplay.innerHTML = history;
+  }
+};
+
+function keyPressed(key) {
+  if (!isNaN(key) | key === '.') {
+    numberClicked(key);
+  } else if (key === '+' | key === '-' | key === '*' | key === '/') {
+    storeNumber(displayNumber, key);
+  } else if (key === 'Enter') {
+    equalize();
+  } else if (key === 'Backspace') {
+    displayNumber = '0';
+    updateDisplay(displayNumber);
+  };
 };
 
 let displayNumber = '0';
@@ -109,5 +126,16 @@ clearButton.addEventListener('click', () => {
 
 backButton.addEventListener('click', () => {
   displayNumber = '0';
-  currentDisplay.innerHTML = displayNumber;
+  updateDisplay(displayNumber);
+});
+
+
+
+window.addEventListener('keydown', (k) => {
+  let keyInput = k.key;
+  let validInput = /^\d|\.|\+|\-|\*|\/|Backspace|Enter/;
+
+  if (validInput.test(keyInput)) {
+    keyPressed(keyInput);
+  }
 });
