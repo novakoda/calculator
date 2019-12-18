@@ -52,7 +52,7 @@ function storeNumber(number, op) {
   previousNumber = displayNumber.toString() + ' ' + operator;
   displayNumber = '0';
   historyDisplay.innerHTML = previousNumber;
-  currentDisplay.innerHTML = displayNumber;
+  //currentDisplay.innerHTML = displayNumber;
 };
 
 function equalize() {
@@ -79,11 +79,11 @@ let previousNumber = '0';
 let operator = '';
 let answered = false;
 
-const numberButtons = document.querySelectorAll('[data-number]');
-const operatorButtons = document.querySelectorAll('[data-operator]');
-const equalButton = document.querySelector('[data-equal]');
-const backButton = document.querySelector('[data-back]');
-const clearButton = document.querySelector('[data-clear]');
+const numberButtons = document.querySelectorAll('.numberButton');
+const operatorButtons = document.querySelectorAll('.operatorButton');
+const equalButton = document.querySelector('.equal');
+const backButton = document.querySelector('.back');
+const clearButton = document.querySelector('.clear');
 const currentDisplay = document.getElementById('result');
 const historyDisplay = document.getElementById('history');
 
