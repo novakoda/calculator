@@ -1,7 +1,8 @@
 body {
   align-items: center;
   text-align: center;
-  background-color: #900;
+  background: rgb(76,0,143);
+  background: linear-gradient(180deg, rgb(47, 0, 88) 0%, rgb(23, 0, 66) 75%, rgb(7, 0, 48) 100%);
 }
 
 #calculator {
