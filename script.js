@@ -89,6 +89,8 @@ function keyPressed(key) {
   } else if (key === 'Backspace') {
     displayNumber = '0';
     updateDisplay(displayNumber);
+  } else if (key === 'Delete') {
+    clear();
   };
 };
 
@@ -139,7 +141,7 @@ backButton.addEventListener('click', () => {
 
 window.addEventListener('keydown', (k) => {
   let keyInput = k.key;
-  let validInput = /^\d|\.|\+|\-|\*|\/|Backspace|Enter/;
+  let validInput = /^\d|\.|\+|\-|\*|\/|Backspace|Enter|Delete/;
 
   if (validInput.test(keyInput)) {
     keyPressed(keyInput);
