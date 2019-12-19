@@ -107,26 +107,31 @@ const historyDisplay = document.getElementById('history');
 numberButtons.forEach(button => {
   button.addEventListener('click', () => {
     numberClicked(button.innerHTML);
+    button.blur();
   });
 });
 
 operatorButtons.forEach(button => {
   button.addEventListener('click', () => {
     storeNumber(displayNumber, button.innerHTML);
+    button.blur();
   });
 });
 
 equalButton.addEventListener('click', () => {
   equalize();
+  equalButton.blur();
 });
 
 clearButton.addEventListener('click', () => {
   clear();
+  clearButton.blur();
 });
 
 backButton.addEventListener('click', () => {
   displayNumber = '0';
   updateDisplay(displayNumber);
+  backButton.blur();
 });
 
 
